@@ -12,12 +12,18 @@ Use the architecture document for the component diagram, implementation boundari
 | Component | Responsibility |
 | --- | --- |
 | [`src/entagent/main.py`](src/entagent/main.py) | HTTP handlers: `GET /healthz`, `GET /tools`, `POST /call` |
+| [`src/entagent/ops.py`](src/entagent/ops.py) | HTTP handlers: `GET /readyz`, `POST /workspaces`, `GET /workspaces`, `POST /workspaces/{workspace_id}/jobs`, `GET /jobs/{job_id}` |
 | [`src/entagent/mcp.py`](src/entagent/mcp.py) | Functions: `list_tools`, `call` |
 | [`requirements.txt`](requirements.txt) | Implementation or supporting configuration |
 | [`src/entagent/__init__.py`](src/entagent/__init__.py) | Implementation or supporting configuration |
+| [`Dockerfile`](Dockerfile) | Container build/service configuration |
+| [`Makefile`](Makefile) | Implementation or supporting configuration |
+| [`docker-compose.yml`](docker-compose.yml) | Container build/service configuration |
 | [`tests/test_mcp.py`](tests/test_mcp.py) | Executable checks and regression examples |
+| [`tests/test_ops.py`](tests/test_ops.py) | Executable checks and regression examples |
 | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | GitHub Actions job definitions |
 | [`README.md`](README.md) | Project explanations or operating notes |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Project explanations or operating notes |
 
 ### Local setup and verification
 
