@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enterprise-ai-agent-platform
+  labels:
+    app: enterprise-ai-agent-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enterprise-ai-agent-platform
+  template:
+    metadata:
+      labels:
+        app: enterprise-ai-agent-platform
+    spec:
+      containers:
+        - name: api
+          image: enterprise-ai-agent-platform:local
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /v1/readyz
+              port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enterprise-ai-agent-platform
+spec:
+  selector:
+    app: enterprise-ai-agent-platform
+  ports:
+    - port: 80
+      targetPort: 8080
